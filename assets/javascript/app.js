@@ -41,7 +41,42 @@ $(document).on('click', '.searchButton', function(){
             //reference a paragraph tag, and contain the text of rating, 
             var p = $('<p>').text('Rating: '+rating);
             //the variables below are so that the code can collect the animated and the still version of the gifs and display them as applicable
-            //var animated = 
-            //var still = 
+            var animated = response.data[i].images.fixed_height.url;
+            var still = response.data[i].images.fixed_height_still.url;
+            var image = $('<img>');
+            image.attr('src',still);
+            image.attr('data-still',still);
+            image.attr('data-animated',animated);
+            //Below references to a string "still", not a URL
+            image.attr('data-state','still');
+            image.addClass('searchImage');
+            //Here we add the p (rating)
+            searchDiv.append(p);
+            //here we add the gif image
+            searchDiv.append(image);
+            //Now images are posted on the screen
+            $('#searches').append(searchDiv);
         })
+})
+
+
+$(document).on('click','.searchImage', function(){
+    var state = $(this).attr('data-state');
+    if(state === 'still') {
+        $(this).attr('src',$(this).data('animated'));
+        $(this).attr('data-state','animated');
+    } else {
+        $(this).attr('src',$(this).data(;still));
+        $(this).attr('data-state','still');
+    }
+})
+
+$('#addSearch').on('click',function(){
+    //this will grab the users new search (on search box) and add it to the newSearch variable. eq(0) is looking for input
+    var newSearch = $('input').eq(0).val();
+    //to add this into our search array
+    searchArray.push(newSearch);
+    populateButtons(searchArray, 'searchButton','#buttonsArea');
+    //return false to prevent the page from re-loading
+    return false;
 })
