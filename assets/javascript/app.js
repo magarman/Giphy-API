@@ -66,7 +66,7 @@ $(document).on('click','.searchImage', function(){
         $(this).attr('src',$(this).data('animated'));
         $(this).attr('data-state','animated');
     } else {
-        $(this).attr('src',$(this).data(;still));
+        $(this).attr('src',$(this).data('still'));
         $(this).attr('data-state','still');
     }
 })
