@@ -27,8 +27,8 @@ $(document).on('click', '.searchButton', function(){
     var type = $(this).data('type');
     //console.log(type);   -- If you uncomment this, you'll see the type after each time you click on an animal
 
-    //With this below, whenever I click on one of the animal buttons, it should return an object with a data array that contains the top 15 gifs related to the data type that is stored on the button I/the user clicks
-    var queryURL = 'https://api.giphy.com/v1/gifs/search?q='+type+'&api_key=8ydzDeZ6zw220SyngrbBmA3O4lGq4Mnvlimit=15'
+    //With this below, whenever I click on one of the animal buttons, it should return an object with a data array that contains the top 10 gifs related to the data type that is stored on the button I/the user clicks
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q='+type+'&api_key=8ydzDeZ6zw220SyngrbBmA3O4lGq4Mnvlimit=10'
     $.ajax({url:queryURL,method:'GET'})
         .done(function(response) {
             console.log(response);
@@ -62,7 +62,9 @@ $(document).on('click', '.searchButton', function(){
 
 $(document).on('click','.searchImage', function(){
     var state = $(this).attr('data-state');
+    //If the gif is still
     if(state === 'still') {
+        //change it's attribute to animated
         $(this).attr('src',$(this).data('animated'));
         $(this).attr('data-state','animated');
     } else {
