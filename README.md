@@ -18,7 +18,10 @@ Click on an animal button to see all the gifs related to this specific animal. T
 - [x] Add a form to the page that takes a value from a user input box and adds it to the array. Then make a function call that takes each topic in the array and remakes the buttons on the page.
 - [x] Add to Portfolio.
 
-### License
-N/A
+### Errors fixed
+1. I kept getting error 403 on the API call. This was fixed by adding an "&" symbol between the end of the API key and the limit parameter.
+2. Then, the images weren't loading, and this was due to a missing bracket on the .done(function(response) :woman_facepalming:
+3. Lastly, the page kept reloading (even when ALL functions minus $('#search-submit').click(function() where commented out), and this was because I didn't have the event.preventDefault() after the function. 
+
 
 ###### :+1: Thanks for reviewing!
